@@ -169,6 +169,26 @@ def submit_message(client, topic_id):
 
     print("Message submitted successfully.")
 
+def update_topic(client):
+    key = client.operator_private_key
+    transaction = (
+        TopicCreateTransaction(
+            memo="Python SDK updated topic")
+        .freeze_with(client)
+        .sign(key)
+    )
+    try:
+        receipt = transaction.execute(client)
+    except Exception as e:
+        print(f"Topic update failed: {str(e)}")
+        sys.exit(1)
+
+    if receipt.status != ResponseCode.SUCCESS:
+        status_message = ResponseCode.get_name(receipt.status)
+        raise Exception(f"Topic update failed with status: {status_message}")
+
+    print("Topic updated successfully.")
+
 def main():
     operator_id, operator_key = load_operator_credentials()
 
@@ -185,6 +205,7 @@ def main():
 
     topic_id = create_topic(client)
     submit_message(client, topic_id)
+    update_topic(client)
 
 if __name__ == "__main__":
     main()
