@@ -24,7 +24,7 @@ jobs:
         run: pip install --upgrade pip setuptools wheel 
       
       - name: Install package with pip e 
-        pip install -e .
+        run: pip install -e .
           
       - name: Prepare Hedera Solo
         id: solo
