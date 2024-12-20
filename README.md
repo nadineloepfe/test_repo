@@ -33,6 +33,13 @@ If on macOS, you can also install `uv` using Homebrew:
 brew install uv
 ```
 
+alternatively, use pip:
+
+```bash
+pip install -e .
+```
+
+
 Other installation methods can be found [here](https://docs.astral.sh/uv/getting-started/installation/).
 
 1. Clone this repository:
@@ -86,7 +93,15 @@ This is done by running 'Hedera Solo'. Read more about it here:
 - [Github Marketplace](https://github.com/marketplace/actions/hedera-solo)
 - [Blog Post by Hendrik Ebbers](https://dev.to/hendrikebbers/ci-for-hedera-based-projects-2nja)
 
-```bash
+
+## Running Example Scripts
+
+To run the test suite for the SDK, use the following command:
+```
+python example/[some script]py
+```
+The package must be installed first, else a "module not found" error will be thrown.
+
 
 #### Output:
 ```
