@@ -11,7 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      # See https://docs.astral.sh/uv/guides/integration/github/#caching For information on `uv`
       - name: Install uv
         uses: astral-sh/setup-uv@v4
 
@@ -20,6 +19,12 @@ jobs:
 
       - name: Install dependencies
         run: uv sync --all-extras --dev
+
+      - name: Install setuptools wheel
+        run: pip install --upgrade pip setuptools wheel 
+      
+      - name: Install package with pip e 
+        pip install -e .
           
       - name: Prepare Hedera Solo
         id: solo

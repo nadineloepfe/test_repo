@@ -24,7 +24,7 @@ class TopicUpdateTransaction(Transaction):
             ValueError: If required fields are missing.
         """
         transaction_body = self.build_base_transaction_body()
-        transaction_body.consensusCreateTopic.CopyFrom(consensus_update_topic_pb2.ConsensusUpdateTopicTransactionBody(
+        transaction_body.consensusUpdateTopic.CopyFrom(consensus_update_topic_pb2.ConsensusUpdateTopicTransactionBody(
             topicID=self.topic_id.to_proto(),
             adminKey=self.admin_key.to_proto() if self.admin_key is not None else None,
             submitKey=self.submit_key.to_proto() if self.submit_key is not None else None,
