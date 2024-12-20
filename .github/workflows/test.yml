@@ -14,6 +14,12 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@v4
 
+      - name: Install setuptools wheel
+        run: pip install --upgrade pip setuptools wheel 
+      
+      - name: Install package with pip e 
+        run: pip install -e .
+
       - name: Setup Python
         run: uv python install
 
@@ -23,11 +29,8 @@ jobs:
       - name: Generate Proto Files
         run: bash ./generate_proto.sh
 
-      - name: Install setuptools wheel
-        run: pip install --upgrade pip setuptools wheel 
-      
-      - name: Install package with pip e 
-        run: pip install -e .
+      - name: check protos
+        run: ls src/hedera_sdk_python/hapi/
           
       - name: Prepare Hedera Solo
         id: solo
